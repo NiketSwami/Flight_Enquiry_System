@@ -1,0 +1,142 @@
+<style>
+  
+    .maincontainer{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        background: #7f8fa6;     
+        height: 100vh;
+    }
+    .root{
+        width: 1250px;
+        height: 100vh;
+        background: grey;
+        border-radius: 10px;
+        padding: 10px;
+        
+    }
+.input-field label{
+  font-weight: bold;
+}
+div{
+  color: black;
+}
+    .heading{
+        color:#fff;
+        font-size: 50px;
+        font-weight: bold;
+        font-family: Dosis;
+        display: flex;
+        justify-content: center;
+        height: 12%;
+        align-items: center;
+        background:#7f8fa6;
+        padding: 5px;
+        border-radius: 10px;
+        text-shadow: 3px 3px 1px black;
+        
+        
+    }
+    .gap{
+        margin-top: 10px;
+    }
+
+    .bold-option{
+    font-weight:bold;
+}
+
+</style>
+
+ 
+
+ <!--JQUERY Import from internet-->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="/javascripts/project.js"></script>
+    <script>
+        $(document).ready(function(){
+    $('select').formSelect();
+  });
+
+  $(document).ready(function(){
+    $('.timepicker').timepicker();
+  });
+  
+
+  </script>
+
+ 
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <!--Google Dosis font-->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
+    
+
+
+      <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    
+   </head>
+
+   <body>
+    <div class="maincontainer">
+        <div class="root">
+            <div class="heading">
+              <div style="display: flex;align-items: center;justify-content: center;">
+              <img src="/images/flightlogo.png" width="150px" >
+            </div>
+              
+            SEARCH FLIGHT SYSTEM
+
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <div class="input-field">
+                    <i class="material-icons prefix">flight_takeoff</i>
+                      <select name="sourcestate" id="sourcestate">
+                        <option value="" disabled selected>Choose your option</option> 
+                      </select>
+                      <label>Select source State</label>
+                    </div>
+                  </div>
+                 
+            <div class="input-field col s3">
+                <i class="material-icons prefix">flight_takeoff</i>
+                <select name="sourcecity" id="sourcecity">
+                  <option value="" disabled selected  class="bold-option">Choose your option</option> 
+                </select>
+                <label>Select source City</label>
+              </div>
+              <div class="input-field col s3">
+                <i class="material-icons prefix">flight_land</i>
+                <select name="destinationstate" id="destinationstate">
+                  <option value="" disabled selected>Choose your option</option> 
+                </select>
+                <label for="icon_prefix">Destination State</label>
+              </div>
+              <div class="input-field col s3">
+                <i class="material-icons prefix">flight_land</i>
+                <select name="destinationcity" id="destinationcity">
+                  <option value="" disabled selected>Choose your option</option> 
+                </select>
+                <label for="icon_prefix">Destination City</label>
+            </div>
+            </div>
+           <div class="row">
+            <div class="col s12" style="display:flex;justify-content:center;">
+            <button id="btn" class="waves-effect waves-light btn"><i class="material-icon left">Search</i></a>
+            </div>
+            <table class="striped" id="result">
+            </table>
+           </div>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   </body>
+ </html>

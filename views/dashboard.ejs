@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>DashBoard</title>
+        <link rel="shortcut icon" type="image" href="/images/airasia.png">
+
+        <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Google Dosis font-->
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
+  
+
+
+    <!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    </head>
+    <body>
+        
+  <nav>
+    <div style="background-color: #7f8fa6;">
+    <div class="nav-wrapper ">
+      <a href="#!" class="brand-logo"><i class="material-icons"><img src="/images/fl.jpg" width="65px" style="border-radius: 15px;"></i><b>SearchAviation</b></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/flight/search" target="mw"><i class="material-icons">search</i></a></li>
+        <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+        <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+        <li><b><%=result.adminname%></b></li>
+        <li><img src="/images/<%=result.adminpicture%>" width="35px" style="border-radius:50% "></li>
+      </ul>
+
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/flight/addnewflights" target="mw">Add Flights</a></li>
+        <li><a href="/flight/displayflightdata" target="mw">List Flights</a></li>
+        <li><a href="/admin/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <iframe style="width: 100vw; height: 100vh;" name="mw" frameborder="0"></iframe>
+    </body>
+</html>

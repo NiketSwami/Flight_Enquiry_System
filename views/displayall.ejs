@@ -1,0 +1,108 @@
+<style>
+  
+    .maincontainer{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        background: #7f8fa6;
+     
+        height: 100vh;
+    }
+    .root{
+        width: 1250px;
+        height: auto;
+         background: azure;
+        border-radius: 10px;
+        padding: 10px;
+        
+    }
+.input-field label{
+  font-weight: bold;
+}
+div{
+  color: black;
+}
+    .heading{
+        color:#fff;
+        font-size: 50px;
+        font-weight: bold;
+        font-family: Dosis;
+        display: flex;
+        justify-content: center;
+        height: 12%;
+        align-items: center;
+        background:#7f8fa6;
+        padding: 5px;
+        border-radius: 10px;
+        text-shadow: 3px 3px 1px black;
+        
+        
+    }
+</style>    
+
+<html>
+    <head>
+        
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+     <!--Google Dosis font-->
+     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet"> 
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </head>
+
+
+    <div class="maincontainer">
+        <div class="root">
+            <div class="heading">
+                DISPLAY ALL FLIGHTS
+
+            </div>
+            <hr>
+            <table class="striped">
+                <thead>
+                  <tr>
+                      <th>Flight Id</th>
+                      <th>Company Name</th>
+                      <th>Source</th>
+                      <th>Destination</th>
+                      <th>Type</th>
+                      <th>Class</th>
+                      <th>Days</th>
+                      <th>Update</th>                      
+                  </tr>
+                </thead>
+        
+                <tbody>
+                  <% data.map((item)=>{ %>
+                    <tr>
+                        <td><%=item.flightid%></td>
+                        <th><%=item.companyname%><br>
+                            <a href="/flight/showpicture?fid=<%=item.flightid%>&companyname=<%=item.companyname%>&logo=<%=item.logo%>">
+                                <img src="/images/<%=item.logo%>" width="45">
+                            </a>
+                        </th>
+                        <td><%=item.sourcecity%><br><%=item.sourcetiming%></td>
+                        <td><%=item.destinationcity%><br><%=item.destinationtiming%></td>
+                        <td><%=item.status%></td>
+                        <td><%=item.flightclass%></td>
+                        <td><%=item.days%></td>
+                        <td><a href="/flight/updatebyid?fid=<%=item.flightid %>">Update</a></td>
+                   <% }) %>
+
+
+                    </tr>
+                 
+                </tbody>
+              </table>
+                    
+        </div>
+
+    </div>
+    
+</html>

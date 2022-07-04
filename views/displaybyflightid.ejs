@@ -1,0 +1,295 @@
+<style>
+  
+    .maincontainer{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        background: #7f8fa6;
+     
+        height: 100vh;
+    }
+    .root{
+        width: 1250px;
+        height: auto;
+         background: azure;
+        border-radius: 10px;
+        padding: 10px;
+        
+    }
+.input-field label{
+  font-weight: bold;
+}
+div{
+  color: black;
+}
+    .heading{
+        color:#fff;
+        font-size: 50px;
+        font-weight: bold;
+        font-family: Dosis;
+        display: flex;
+        justify-content: center;
+        height: 12%;
+        align-items: center;
+        background:#7f8fa6;
+        padding: 5px;
+        border-radius: 10px;
+        text-shadow: 3px 3px 1px black;
+        
+        
+    }
+    .gap{
+        margin-top: 10px;
+    }
+
+    .bold-option{
+    font-weight:bold;
+}
+
+</style>
+
+ 
+    
+ 
+   
+
+ <!--JQUERY Import from internet-->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="/javascripts/project.js"></script>
+    <script>
+        $(document).ready(function(){
+    $('select').formSelect();
+  });
+
+  $(document).ready(function(){
+    $('.timepicker').timepicker();
+  });
+  
+
+    </script>
+
+ 
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <!--Google Dosis font-->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
+    
+
+
+      <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    
+   </head>
+
+   <body>
+     <form action="/flight/editdeleterecord" method="post">
+
+    <div class="maincontainer">
+      
+        <div class="root">
+            <div class="heading">
+              
+                DISPLAY BY FLIGHTID
+              
+            </div>
+ 
+            <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">airplanemode_active</i>
+                  <input id="icon_id" name="flightid" type="text" value="<%=data.flightid%>" class="validate" readonly>
+                  <label for="icon_prefix">Flight ID</label>
+                </div>
+            
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">business</i>
+                  <input id="icon_name" name="companyname" type="text" class="validate" value="<%=data.companyname%>">
+                  <label for="icon_prefix">Company Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s3">
+                  <div class="input-field">
+                  <i class="material-icons prefix">flight_takeoff</i>
+                    <select name="sourcestate" id="sourcestate">
+                      <option value="<%=data.sourcestateid%>" selected><%=data.ss%></option> 
+                    </select>
+                    <label>Select source State</label>
+                  </div>
+                </div>
+                <div class="input-field col s3">
+                  <i class="material-icons prefix">flight_takeoff</i>
+                  <select name="sourcecity" id="sourcecity">
+                    <option value="<%=data.sourcecityid%>" selected  class="bold-option"><%=data.sc%></option> 
+                  </select>
+                  <label>Select source City</label>
+                </div>
+            
+                <div class="input-field col s3">
+                  <i class="material-icons prefix">flight_land</i>
+                  <select name="destinationstate" id="destinationstate">
+                    <option value="<%=data.destinationstateid%>" selected><%=data.ds%></option> 
+                  </select>
+                  <label for="icon_prefix">Destination State</label>
+                </div>
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">flight_land</i>
+                    <select name="destinationcity" id="destinationcity">
+                      <option value="<%=data.destinationcityid%>" selected><%=data.dc%></option> 
+                    </select>
+                    <label for="icon_prefix">Destination City</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s3">
+                      <div class="input-field">
+                        <select name="status">
+                          <option selected><%=data.status%></option>
+                          <option>With Stop</option>
+                          <option>Non Stop</option>
+                        </select>
+                        <label>Select status</label>
+                      </div>
+                </div>
+
+                <% var tclass=data.flightclass.split('#')
+                    var ts=['','','']
+                    for(var i=0;i<tclass.length;i++)
+                    {
+                        if(tclass[i]=='Economy')
+                        { ts[0]='checked'}
+
+                        if(tclass[i]=='Business')
+                        { ts[1]='checked'}
+
+                        if(tclass[i]=='FirstClass')
+                        { ts[2]='checked'}
+                    }
+                
+                
+                %>
+                <div class="col s3" style="display: flex;flex-direction: row; justify-content:space-around;align-items: center;">
+                  <p>
+                    <label>
+                      <input type="checkbox" name="fclass" value="Economy" <%=ts[0] %> />
+                      <span><b>Economy</b></span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" name="fclass" value="Business" <%=ts[1] %> />
+                      <span><b>Business</b></span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" name="fclass" value="FirstClass" <%=ts[2] %> />
+                      <span><b>FirstClass</b></span>
+                    </label>
+                  </p>
+
+                </div>
+            
+              <div class="col s3">
+                <div class="input-field">
+                  <i class="material-icons prefix">access_time</i>
+                  <input id="icon_sourcetime" name="sourcetime" type="text" class="timepicker" value="<%=data.sourcetiming %>">
+                  <label for="icon_sourcetime">Source Timing</label>
+                </div>
+              </div>
+              <div class="col s3">
+                <div class="input-field ">
+                  <i class="material-icons prefix">access_time</i>
+                  <input id="icon_destime" name="destime" type="text" class="timepicker" value="<%=data.destinationtiming %>">
+                  <label for="icon_destime">Destination Timing</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+            <div class="col s12" style="display: flex;flex-direction: row; justify-content:space-around;align-items: center;">
+              <p>
+                <label>
+                  <input type="checkbox" name="days" value="Sunday"<%= data.days.includes('Sunday')?'checked':''%> />
+                  <span><b>Sunday</b></span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" name="days" value="Monday" <%= data.days.includes('Monday')?'checked':''%>/>
+                  <span><b>Monday</b></span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" name="days" value="Tuesday"<%= data.days.includes('Tuesday')?'checked':''%> />
+                  <span><b>Tuesday</b></span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" name="days" value="Wednesday"<%= data.days.includes('Wednesday')?'checked':''%> />
+                  <span><b>Wednesday</b></span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" name="days" value="Thrusday" <%= data.days.includes('Thrusday')?'checked':''%>/>
+                  <span><b>Thrusday</b></span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" name="days" value="Friday" <%= data.days.includes('Friday')?'checked':''%>/>
+                  <span><b>Friday</b></span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" name="days" value="Saturday" <%= data.days.includes('Saturday')?'checked':''%>/>
+                  <span><b>Saturday</b></span>
+                </label>
+              </p>
+
+            </div>
+            </div>
+
+
+            
+  
+            <div class="row">
+              <div class="col s4" style="display:flex;justify-content:center">
+                <button class="btn waves-effect waves-light" type="submit" name="btn" value="Edit"><b>Edit</b>
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            
+              <div class="col s4" style="display:flex;justify-content:center;font-size: 24;font-weight: bold;">
+                   
+              </div>
+
+            
+            
+              <div class="col s4" style="display:flex;justify-content:center">
+                <button class="btn waves-effect waves-light" type="submit" name="btn" value="Delete"><b>Delete</b>
+                  <i class="material-icons right">remove</i>
+                </button>
+              </div>
+            </div>
+           
+            
+
+
+        </div>
+    </div>
+  </form>
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   </body>
+ </html>
